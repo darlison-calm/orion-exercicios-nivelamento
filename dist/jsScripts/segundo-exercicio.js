@@ -1,11 +1,11 @@
-let lista = [
+export let lista = [
     { "id": 1, "name": "Ada Lovelace", "bio": "Ada Lovelace, foi uma matemática e escritora inglesa reconhecida por ter escrito o primeiro algoritmo para ser processado por uma máquina" },
     { "id": 2, "name": "Alan Turing", "bio": "Alan Turing foi um matemático, cientista da computação, lógico, criptoanalista, filósofo e biólogo teórico britânico, ele é amplamente considerado o pai da ciência da computação teórica e da inteligência artificial" },
     { "id": 3, "name": "Nikola Tesla", "bio": "Nikola Tesla foi um inventor, engenheiro eletrotécnico e engenheiro mecânico sérvio, mais conhecido por suas contribuições ao projeto do moderno sistema de fornecimento de eletricidade em corrente alternada." },
     { "id": 4, "name": "Nicolau Copérnico", "bio": "Nicolau Copérnico foi um astrônomo e matemático polonês que desenvolveu a teoria heliocêntrica do Sistema Solar." }
 ];
 //a) Crie uma função que retorne a bio do id passado
-function acharBio(id) {
+export function acharBio(id) {
     let pessoaBio;
     lista.forEach(pessoa => {
         if (pessoa['id'] === id) {
@@ -25,7 +25,7 @@ function acharNome(id) {
     return pessoaNome || 'Nome não encotrado pois id não existe';
 }
 //c) Crie uma função que apague um item da lista a partir de um id passado
-function apagarItem(id) {
+export function apagarItem(id) {
     let index;
     for (let i = 0; i < lista.length; i++) {
         if (lista[i]['id'] === id) {
@@ -78,7 +78,7 @@ function acharBioImperativo(id) {
     });
     return pessoaBio || "Biografia não encontrada pois id não existe";
 }
-function acharBioFuncional(id, items) {
+export function acharBioFuncional(id, items) {
     const item = items.find(item => item['id'] === id);
     return item['bio'] || "Biografia não encontrada pois id não existe";
 }
@@ -91,7 +91,7 @@ function acharNomeImperativo(id) {
     });
     return pessoaNome || 'Nome não encotrado pois id não existe';
 }
-function acharNomeFuncional(id, items) {
+export function acharNomeFuncional(id, items) {
     const pessoa = items.find(item => item['id'] == id);
     return pessoa['name'] || 'Nome não encotrado pois id não existe';
 }

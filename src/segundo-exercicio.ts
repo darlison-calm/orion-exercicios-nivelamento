@@ -1,12 +1,13 @@
-let lista : Array <Object> = [
+export let lista : Array<Object> = [
   {"id" : 1, "name": "Ada Lovelace", "bio" : "Ada Lovelace, foi uma matemática e escritora inglesa reconhecida por ter escrito o primeiro algoritmo para ser processado por uma máquina"},
   {"id" : 2, "name": "Alan Turing", "bio" : "Alan Turing foi um matemático, cientista da computação, lógico, criptoanalista, filósofo e biólogo teórico britânico, ele é amplamente considerado o pai da ciência da computação teórica e da inteligência artificial"},
   {"id" : 3, "name": "Nikola Tesla", "bio" : "Nikola Tesla foi um inventor, engenheiro eletrotécnico e engenheiro mecânico sérvio, mais conhecido por suas contribuições ao projeto do moderno sistema de fornecimento de eletricidade em corrente alternada."},
   {"id" : 4, "name": "Nicolau Copérnico", "bio": "Nicolau Copérnico foi um astrônomo e matemático polonês que desenvolveu a teoria heliocêntrica do Sistema Solar."}
 ]
 
+
 //a) Crie uma função que retorne a bio do id passado
-function acharBio(id: number) :string {
+export function acharBio(id: number) :string {
   let pessoaBio : string;
   
   lista.forEach(pessoa => {
@@ -18,8 +19,10 @@ function acharBio(id: number) :string {
   return pessoaBio || "Biografia não encontrada pois id não existe"
 }
 
+
+
 //b) Crie uma função que retorne o name do id passado
-function acharNome(id: number) :string {
+ function acharNome(id: number) :string {
   let pessoaNome : string;  
   
   lista.forEach(pessoa => {
@@ -32,7 +35,7 @@ function acharNome(id: number) :string {
 }
 
 //c) Crie uma função que apague um item da lista a partir de um id passado
-function apagarItem(id: number): void {
+export function apagarItem(id: number): void {
   let index : number;
   for (let i = 0; i < lista.length; i++) {
     
@@ -45,7 +48,7 @@ function apagarItem(id: number): void {
 }
 
 //d) Crie uma função que altere a bio ou o name a partir de um id passado
-function alterarItem(id: number, campo: 'bio' | 'name', novoValor: string): void {
+ function alterarItem(id: number, campo: 'bio' | 'name', novoValor: string): void {
   let index: number = lista.findIndex(item => item['id'] === id);
   lista[index][campo] = novoValor
 }
@@ -98,7 +101,7 @@ function acharBioImperativo(id: number) :string {
   return pessoaBio || "Biografia não encontrada pois id não existe"
 }
 
-function acharBioFuncional(id: number, items :Array<Object>) :string {
+export function acharBioFuncional(id: number, items :Array<Object>) :string {
   const item = items.find(item => item['id'] === id)
   return item['bio'] || "Biografia não encontrada pois id não existe"
 }
@@ -115,7 +118,7 @@ function acharNomeImperativo(id: number) :string {
   return pessoaNome || 'Nome não encotrado pois id não existe';
 }
 
-function acharNomeFuncional(id: number, items :Array<Object>) :string {
+export function acharNomeFuncional(id: number, items :Array<Object>) :string {
   const pessoa = items.find(item => item['id'] == id)
   return pessoa['name'] || 'Nome não encotrado pois id não existe';
 }
