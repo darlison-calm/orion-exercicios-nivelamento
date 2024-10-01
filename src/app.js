@@ -1,4 +1,6 @@
-import { lista, apagarItem } from "./segundo-exercicio.js";
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const segundo_exercicio_1 = require("./segundo-exercicio");
 let table = document.getElementById('table');
 function renderizarPessoas(lista) {
     lista.forEach((pessoa) => {
@@ -18,18 +20,16 @@ function deletarItem(event) {
     ;
     if (target && target.classList.contains('delete-button')) {
         const id = parseInt(target.getAttribute('data-id'));
-        apagarItem(id);
+        (0, segundo_exercicio_1.apagarItem)(id);
         limparTabela();
-        renderizarPessoas(lista);
+        renderizarPessoas(segundo_exercicio_1.lista);
     }
 }
 function limparTabela() {
-    const linhas = table.querySelectorAll('.content');
-    console.log(linhas);
-    linhas.forEach(linha => linha.remove());
+    const linhas = table.querySelectorAll('content');
+    linhas.forEach(linha => linha.innerHTML = '');
 }
 if (table) {
     table.addEventListener('click', deletarItem);
 }
-renderizarPessoas(lista);
-//# sourceMappingURL=app.js.map
+renderizarPessoas(segundo_exercicio_1.lista);
