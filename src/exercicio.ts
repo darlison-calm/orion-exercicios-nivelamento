@@ -4,9 +4,6 @@ function countVowal(text: string): number {
   return matches ? matches.length : 0;
 }
 
-
-countVowal('casa') //retorna 2 
-
 const form = document.getElementById('form') as HTMLFormElement
 const result = document.querySelector('p') as HTMLElement;
 const word = document.getElementById('word-input') as HTMLInputElement;
