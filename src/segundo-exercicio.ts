@@ -36,19 +36,13 @@ export function acharBio(id: number) :string {
 
 //c) Crie uma função que apague um item da lista a partir de um id passado
 export function apagarItem(id: number): void {
-  let index : number;
-  for (let i = 0; i < lista.length; i++) {
-    
-    if(lista[i]['id'] === id){
-      index = i
-    }
-  }
-
-  lista.splice(index, 1)
+  const index = lista.findIndex(item => item['id'] === id);
+  lista.splice(index, 1);
 }
 
+
 //d) Crie uma função que altere a bio ou o name a partir de um id passado
- function alterarItem(id: number, campo: 'bio' | 'name', novoValor: string): void {
+ export function alterarItem(id: number, campo: 'bio' | 'name', novoValor: string): void {
   let index: number = lista.findIndex(item => item['id'] === id);
   lista[index][campo] = novoValor
 }

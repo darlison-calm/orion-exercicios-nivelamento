@@ -23,7 +23,28 @@
             <th>Biografia</th>
         </tr>
     </table>
-    <script src="jsScripts/app.js" type="module"></script>
-    <script src="jsScripts/primeiro-exercicio.js"></script>
+    <br>
+
+    <form id="bio-form">
+        <label for="id">Procure a biografia, digite o id da pessoa:</label>
+        <input  id="bio-input-id" type="number" min="1" max="4" required>
+        <button type="submit">Confirmar</button>
+    </form>
+    <p class="bio-text"></p>
+
+
+    <h2>Alterar dados</h2>
+    <form id="alterar-item-form">
+        <label style="display: block;" for="input-id-dados">digite o id da pessoa:</label>
+        <input  id="input-id-dados" type="number" max="4" min="1" required>
+        <label for="novo-nome" style="display: block;">Novo nome</label>
+        <input id="novo-nome" style="display: block;" type="text" type="text">
+        <label for="nova-bio" style="display: block;">Nova Bio</label>
+        <input  id="nova-bio" style="display: block;" type="text" type="text">
+        <button type="submit">Confirmar</button>
+    </form>
+
+    <script src="app.js" type="module"></script>
+    <script src="primeiro-exercicio.js"></script>
 </body>
 </html>
