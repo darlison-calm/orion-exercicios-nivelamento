@@ -1,29 +1,30 @@
 import { lista, apagarItem, acharBio, alterarItem } from "./segundo-exercicio.js";
 
-let table = document.getElementById('table') as HTMLTableElement;
+let container = document.querySelector('tbody');
 
 function renderizarPessoas(lista : Array<Object>) {
+  
   lista.forEach((pessoa : Object) => {
-    let container = document.createElement('tr')
-    container.classList.add("content")
+
+    const tr = document.createElement('tr')
     
-    container.innerHTML = `<tr>
-            <td>${pessoa['id']}</td>
-            <td>${pessoa['name']}</td>
-            <td>${pessoa['bio']}</td>
-        </tr>`
-    const deleteButton = document.createElement('button') 
-    deleteButton.textContent = 'DELETAR'
+    tr.innerHTML = `<tr scope="row">
+      <th scope="row">${pessoa['id']}</th>
+      <td>${pessoa['name']}</td>
+      <td>${pessoa['bio']}</td>
+      <td><button type="button" class="delete-btn btn btn-danger">DELETAR</button></td>
+    </tr>`
+ 
+    const deleteButton = tr.querySelector('.delete-btn');
     
     deleteButton.addEventListener('click', () => {
-      let id = pessoa['id'];
-      apagarItem(id);
-      limparTabela();
-      renderizarPessoas(lista);
-    }) 
+        let id = pessoa['id'];
+        apagarItem(id);
+        limparTabela();
+        renderizarPessoas(lista);
+    });
 
-    container.appendChild(deleteButton)
-    table.appendChild(container)
+    container.appendChild(tr);
   })
 }
 
@@ -44,8 +45,7 @@ function mostrarBio() :void {
 
 
 function limparTabela() :void {
-  const linhas = table.querySelectorAll('.content');
-  linhas.forEach(linha => linha.remove());
+  container.innerHTML = ''
 }
 
 function alteraçãoItemFuncionalidade() {

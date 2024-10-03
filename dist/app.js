@@ -1,24 +1,22 @@
 import { lista, apagarItem, acharBio, alterarItem } from "./segundo-exercicio.js";
-let table = document.getElementById('table');
+let container = document.querySelector('tbody');
 function renderizarPessoas(lista) {
     lista.forEach((pessoa) => {
-        let container = document.createElement('tr');
-        container.classList.add("content");
-        container.innerHTML = `<tr>
-            <td>${pessoa['id']}</td>
-            <td>${pessoa['name']}</td>
-            <td>${pessoa['bio']}</td>
-        </tr>`;
-        const deleteButton = document.createElement('button');
-        deleteButton.textContent = 'DELETAR';
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<tr scope="row">
+      <th scope="row">${pessoa['id']}</th>
+      <td>${pessoa['name']}</td>
+      <td>${pessoa['bio']}</td>
+      <td><button type="button" class="delete-btn btn btn-danger">DELETAR</button></td>
+    </tr>`;
+        const deleteButton = tr.querySelector('.delete-btn');
         deleteButton.addEventListener('click', () => {
             let id = pessoa['id'];
             apagarItem(id);
             limparTabela();
             renderizarPessoas(lista);
         });
-        container.appendChild(deleteButton);
-        table.appendChild(container);
+        container.appendChild(tr);
     });
 }
 function mostrarBio() {
@@ -32,8 +30,7 @@ function mostrarBio() {
     });
 }
 function limparTabela() {
-    const linhas = table.querySelectorAll('.content');
-    linhas.forEach(linha => linha.remove());
+    container.innerHTML = '';
 }
 function alteraçãoItemFuncionalidade() {
     const alterarDadosForm = document.getElementById('alterar-item-form');
