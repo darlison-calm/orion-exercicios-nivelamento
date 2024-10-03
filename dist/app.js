@@ -1,6 +1,5 @@
 import { lista, apagarItem, acharBio, alterarItem } from "./segundo-exercicio.js";
 let table = document.getElementById('table');
-
 function renderizarPessoas(lista) {
     lista.forEach((pessoa) => {
         let container = document.createElement('tr');
@@ -12,14 +11,12 @@ function renderizarPessoas(lista) {
         </tr>`;
         const deleteButton = document.createElement('button');
         deleteButton.textContent = 'DELETAR';
-
         deleteButton.addEventListener('click', () => {
             let id = pessoa['id'];
             apagarItem(id);
-            limparTabela()
+            limparTabela();
             renderizarPessoas(lista);
         });
-
         container.appendChild(deleteButton);
         table.appendChild(container);
     });

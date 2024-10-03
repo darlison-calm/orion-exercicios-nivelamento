@@ -1,9 +1,8 @@
-import { lista, apagarItem, acharBio, alterarItem } from "./segundo-exercicio";
+import { lista, apagarItem, acharBio, alterarItem } from "./segundo-exercicio.js";
 
 let table = document.getElementById('table') as HTMLTableElement;
 
 function renderizarPessoas(lista : Array<Object>) {
-  
   lista.forEach((pessoa : Object) => {
     let container = document.createElement('tr')
     container.classList.add("content")
@@ -19,6 +18,7 @@ function renderizarPessoas(lista : Array<Object>) {
     deleteButton.addEventListener('click', () => {
       let id = pessoa['id'];
       apagarItem(id);
+      limparTabela();
       renderizarPessoas(lista);
     }) 
 
