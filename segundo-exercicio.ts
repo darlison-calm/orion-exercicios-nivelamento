@@ -83,11 +83,8 @@ function apagarItemImperativo(id: number): void {
   }
 }
 
-function apagarItemFuncional(id: number, items: Array<Pessoa>) :Array <Pessoa> {
-  const index: number = items.findIndex(item => item.id === id);
-
-  const novaLista = [...items.slice(0, index), ...items.slice(index+1, items.length)]
-  return novaLista
+function apagarItemFuncional(id: number, lista: Array<Pessoa>) :Array <Pessoa> {
+  return lista.filter(pessoa => pessoa.id !== id)
 }
 
 //d) Crie uma função que altere a bio ou o name a partir de um id passado
