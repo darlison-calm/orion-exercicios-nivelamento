@@ -35,7 +35,7 @@ function mostrarBio() :void {
   const bioInput = document.getElementById('bio-input-id') as HTMLInputElement;
 
   bioForm.addEventListener('submit', (event : Event) => {
-    const bioText = document.querySelector(".bio-text") as HTMLParagraphElement;
+    const bioText = document.querySelector("#bio-text") as HTMLParagraphElement;
     event.preventDefault();
 
     let id = Number(bioInput.value);

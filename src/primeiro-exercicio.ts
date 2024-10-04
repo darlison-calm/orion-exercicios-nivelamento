@@ -4,8 +4,8 @@ function countVowal(text: string): number {
   return matches ? matches.length : 0;
 }
 
-const form = document.getElementById('form') as HTMLFormElement
-const result = document.querySelector('p') as HTMLElement;
+const form = document.getElementById('contar-vogais-form') as HTMLFormElement
+const result = document.querySelector('#result') as HTMLElement;
 const word = document.getElementById('word-input') as HTMLInputElement;
 
 form.addEventListener('submit', (event) => {

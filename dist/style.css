@@ -1,3 +1,50 @@
 h1 {
   margin-bottom: 20px;
 }
+
+#contar-vogais-form {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;  
+}
+
+input {
+  border-radius: 4px;
+  border: 1px solid gray;
+  margin-left: 10px;
+  padding: 0;
+  margin: 0;
+}
+
+#alterar-item-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  font-size: 1.3rem;
+  & div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:flex-start;
+    & input {
+      width: 150px;
+    }
+  }
+}
+
+.alterar-dados {
+  padding: 10px;
+  text-align: center;
+}
+
+#bio-form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 1.3rem;
+}

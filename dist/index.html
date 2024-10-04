@@ -9,13 +9,15 @@
 </head>
 <body>
     <h1>Primeiro exercicio</h1>
-    <h4>Contador de Vogais</h3>
-    <form id="form">
-        <label for="word-input">Digite uma palavra:</label>
-        <input type="text" id="word-input" required>
-        <button type="submit">Contar Vogais</button>
+    <h4 style="text-align: center;">Contador de Vogais</h3>
+    <form id="contar-vogais-form">
+        <div>
+            <label for="word-input">Digite uma palavra: </label>
+            <input type="text" id="word-input" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-sm">Contar Vogais</button>
     </form>
-    <p id="result"></p>
+    <p id="result" style="text-align: center;"></p>
     <h1>Segundo exercicio</h1>
     
     <table id="table" class="table table-striped">
@@ -31,24 +33,36 @@
         </tbody>
     </table>
 
-    <form id="bio-form">
-        <label for="id">Procure a biografia, digite o id da pessoa:</label>
-        <input  id="bio-input-id" type="number" min="1" max="4" required>
-        <button type="submit">Confirmar</button>
+    <form id="bio-form" style="text-align: center;">
+            <h4>Ache a Bio</h4>
+            <label for="bio-input-id">Informe o Id:</label>
+            <input  id="bio-input-id" type="number" min="1" max="4" required>
+            <button type="submit" class="btn btn-primary btn-sm">Confirmar</button>
     </form>
-    <p class="bio-text"></p>
 
+    <p id="bio-text" style="text-align: center;"></p>
 
-    <h4>Alterar dados</h4>
-    <form id="alterar-item-form">
-        <label style="display: block;" for="input-id-dados">digite o id da pessoa:</label>
-        <input  id="input-id-dados" type="number" max="4" min="1" required>
-        <label for="novo-nome" style="display: block;">Novo nome</label>
-        <input id="novo-nome" style="display: block;" type="text" type="text">
-        <label for="nova-bio" style="display: block;">Nova Bio</label>
-        <input  id="nova-bio" style="display: block;" type="text" type="text">
-        <button type="submit">Confirmar</button>
-    </form>
+    <section class="alterar-dados">
+        <h4>Alterar dados</h4>
+        <form id="alterar-item-form">
+            <div>
+                <label for="input-id-dados">Digite o Id:</label>
+                <input id="input-id-dados" type="number" max="4" min="1" required>
+            </div>
+            
+            <div>
+                <label for="novo-nome">Novo nome:</label>
+                <input id="novo-nome" type="text" type="text">
+            </div>
+        
+            <div>
+                <label for="nova-bio">Nova Bio:</label>
+                <input  id="nova-bio" type="text" type="text">
+            </div>
+        
+            <button type="submit" class="btn btn-primary btn">Confirmar</button>
+        </form>
+    </section>
 
     <script src="app.js" type="module"></script>
     <script src="primeiro-exercicio.js"></script>

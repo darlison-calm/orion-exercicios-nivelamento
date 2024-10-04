@@ -2,8 +2,8 @@ function countVowal(text) {
     const matches = text.match(/[aeiou]/gi);
     return matches ? matches.length : 0;
 }
-const form = document.getElementById('form');
-const result = document.querySelector('p');
+const form = document.getElementById('contar-vogais-form');
+const result = document.querySelector('#result');
 const word = document.getElementById('word-input');
 form.addEventListener('submit', (event) => {
     event.preventDefault();

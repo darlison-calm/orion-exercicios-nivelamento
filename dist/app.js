@@ -23,7 +23,7 @@ function mostrarBio() {
     const bioForm = document.getElementById('bio-form');
     const bioInput = document.getElementById('bio-input-id');
     bioForm.addEventListener('submit', (event) => {
-        const bioText = document.querySelector(".bio-text");
+        const bioText = document.querySelector("#bio-text");
         event.preventDefault();
         let id = Number(bioInput.value);
         bioText.innerHTML = acharBio(id);
