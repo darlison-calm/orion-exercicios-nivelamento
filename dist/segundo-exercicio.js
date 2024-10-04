@@ -4,10 +4,30 @@ export let lista = [
     { "id": 3, "name": "Nikola Tesla", "bio": "Nikola Tesla foi um inventor, engenheiro eletrotécnico e engenheiro mecânico sérvio, mais conhecido por suas contribuições ao projeto do moderno sistema de fornecimento de eletricidade em corrente alternada." },
     { "id": 4, "name": "Nicolau Copérnico", "bio": "Nicolau Copérnico foi um astrônomo e matemático polonês que desenvolveu a teoria heliocêntrica do Sistema Solar." }
 ];
+/* acharPessoa
+ *
+ * Retorna uma pessoa da lista com base no ID fornecido.
+ *
+ * @param id - O ID da pessoa que está sendo procurada.
+ * @param lista - Um array de objetos do tipo Pessoa onde a busca será realizada.
+ * @returns A pessoa correspondente ao ID fornecido ou undefined se não encontrada.
+ */
 function acharPessoa(id, lista) {
     return lista.find(p => p.id === id);
 }
-//a) Crie uma função que retorne a bio do id passado
+/*
+ * acharBioFuncional
+ *
+ * Retorna a biografia de uma pessoa com base no ID fornecido.
+ * Se a pessoa não existir ou sua biografia não estiver disponível,
+ * retorna uma mensagem apropriada.
+ *
+ * @param id - O ID da pessoa cuja biografia está sendo procurada.
+ * @param lista - Um array de objetos do tipo Pessoa onde a busca será realizada.
+ * @returns A biografia da pessoa correspondente ao ID, uma mensagem de erro
+ * se o ID não existir, ou uma mensagem informando que a biografia
+ * não existe.
+ */
 function acharBioFuncional(id, lista) {
     const pessoa = acharPessoa(id, lista);
     if (!pessoa) {
@@ -19,7 +39,17 @@ function acharBioFuncional(id, lista) {
     return pessoa.bio;
 }
 ;
-export function acharBioImperativo(id) {
+/**
+ * acharBioImperativa
+ *
+ * Retorna a biografia de uma pessoa pelo ID fornecido.
+ * Se o ID não existir ou a biografia não estiver disponível,
+ * retorna uma mensagem apropriada.
+ *
+ * @param id - O ID da pessoa cuja biografia está sendo procurada.
+ * @returns A biografia da pessoa ou mensagens de erro se necessário.
+ */
+export function acharBioImperativa(id) {
     const pessoa = acharPessoa(id, lista);
     if (!pessoa) {
         return "Biografia não encontrada pois id não existe";
@@ -30,7 +60,17 @@ export function acharBioImperativo(id) {
     return pessoa.bio;
 }
 ;
-//b) Crie uma função que retorne o name do id passado
+/**
+ * acharNomeFuncional
+ *
+ * Retorna o nome de uma pessoa pelo ID fornecido.
+ * Se o ID não existir ou o nome não estiver disponível,
+ * retorna uma mensagem apropriada.
+ *
+ * @param id - O ID da pessoa cujo nome está sendo procurado.
+ * @param lista - Array de objetos do tipo Pessoa onde a busca será realizada.
+ * @returns O nome da pessoa, ou mensagens de erro se a biografia ou a pessoa não existir.
+ */
 function acharNomeFuncional(id, lista) {
     const pessoa = acharPessoa(id, lista);
     if (!pessoa) {
@@ -41,7 +81,17 @@ function acharNomeFuncional(id, lista) {
     }
     return pessoa.name;
 }
-export function acharNomeImperativo(id) {
+/**
+ * acharNomeImperativa
+ *
+ * Retorna o nome de uma pessoa pelo ID fornecido.
+ * Se o ID não existir ou o nome não estiver disponível,
+ * retorna uma mensagem apropriada.
+ *
+ * @param id - O ID da pessoa cujo nome está sendo procurado.
+ * @returns O nome da pessoa ou erro se a pessoa ou o nome da pessoa não existir.
+ */
+function acharNomeImperativa(id) {
     const pessoa = acharPessoa(id, lista);
     if (!pessoa) {
         return "Biografia não encontrada pois id não existe";
@@ -51,27 +101,65 @@ export function acharNomeImperativo(id) {
     }
     return pessoa.name;
 }
-//c) Crie uma função que apague um item da lista a partir de um id passado
+/**
+ * apagarItemImperativo
+ *
+ * Remove uma pessoa da lista com base no ID fornecido.
+ * Se o ID não existir, não faz nenhuma alteração na lista.
+ *
+ * @param id - O ID da pessoa a ser removida da lista.
+ */
 export function apagarItemImperativo(id) {
     const index = lista.findIndex(pessoa => pessoa.id === id);
     if (index !== undefined) {
         lista.splice(index, 1);
     }
 }
-function apagarItemFuncional(id, items) {
-    const index = items.findIndex(item => item.id === id);
-    const novaLista = [...items.slice(0, index), ...items.slice(index + 1, items.length)];
-    return novaLista;
+/**
+ * apagarItemFuncional
+ *
+ * Remove uma pessoa da lista com base no ID fornecido.
+ * Retorna uma nova lista sem a pessoa cujo ID foi especificado.
+ *
+ * @param id - O ID da pessoa a ser removida da lista.
+ * @param lista - Um array de objetos do tipo Pessoa de onde a pessoa será removida.
+ * @returns Uma nova lista de pessoas sem a pessoa com o ID especificado.
+ */
+function apagarItemFuncional(id, lista) {
+    return lista.filter(pessoa => pessoa.id !== id);
 }
-//d) Crie uma função que altere a bio ou o name a partir de um id passado
+/**
+ * alterarItemImperativo
+ *
+ * Altera o campo especificado (bio ou name) de uma pessoa na lista
+ * com base no ID fornecido. A alteração é feita diretamente na lista.
+ *
+ * @param id - O ID da pessoa cujo campo será alterado.
+ * @param campo - O campo a ser alterado, pode ser 'bio' ou 'name'.
+ * @param novoValor - O novo valor a ser atribuído ao campo.
+ */
 export function alterarItemImperativo(id, campo, novoValor) {
     let index = lista.findIndex(item => item.id === id);
     lista[index][campo] = novoValor;
 }
-function alterarItemFuncional(id, campo, novoValor, lista) {
+/**
+ * alterarItemFuncional
+ *
+ * Altera o campo especificado (bio ou name) de uma pessoa em uma nova lista
+ * com base no ID fornecido. Retorna uma nova lista com a alteração aplicada.
+ *
+ * @param id - O ID da pessoa cujo campo será alterado.
+ * @param campo - O campo a ser alterado, pode ser 'bio' ou 'name'.
+ * @param novoValor - O novo valor a ser atribuído ao campo.
+ * @param lista - Um array de objetos do tipo Pessoa de onde a pessoa será alterada.
+ * @returns Uma nova lista de pessoas com a alteração aplicada.
+ */
+export function alterarItemFuncional(id, campo, novoValor, lista) {
     const novaLista = [...lista];
     let index = novaLista.findIndex(pessoa => pessoa.id === id);
-    novaLista[index][campo] = novoValor;
+    if (index !== -1) {
+        novaLista[index][campo] = novoValor;
+    }
     return novaLista;
 }
 //# sourceMappingURL=segundo-exercicio.js.map

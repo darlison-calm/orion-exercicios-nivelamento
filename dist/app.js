@@ -1,4 +1,4 @@
-import { lista, apagarItemImperativo, acharBioImperativo, alterarItemImperativo } from "./segundo-exercicio.js";
+import { lista, apagarItemImperativo, acharBioImperativa, alterarItemImperativo } from "./segundo-exercicio.js";
 let container = document.querySelector('tbody');
 function renderizarPessoas(lista) {
     lista.forEach((pessoa) => {
@@ -26,7 +26,7 @@ function mostrarBio() {
         const bioText = document.querySelector("#bio-text");
         event.preventDefault();
         let id = Number(bioInput.value);
-        bioText.innerHTML = acharBioImperativo(id);
+        bioText.innerHTML = acharBioImperativa(id);
     });
 }
 function limparTabela() {
