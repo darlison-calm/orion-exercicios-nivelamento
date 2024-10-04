@@ -12,7 +12,7 @@ let lista: Array <Pessoa> = [
 ]
 
 //a) Crie uma função que retorne a bio do id passado
-function acharBioImperativo(id: number): string {
+function acharBioFuncional(id: number): string {
   const pessoa = lista.find(p => p.id === id);
   
   if(!pessoa) {
@@ -25,9 +25,6 @@ function acharBioImperativo(id: number): string {
   
   return pessoa.bio
 };
-
-console.log(acharBioImperativo(2))
-
 
 // function acharBioFuncional(id: number, items :Array<Pessoa>) :string {
 //   const ip= items.find(item => item.id === id)
