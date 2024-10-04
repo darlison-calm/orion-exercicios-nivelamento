@@ -1,4 +1,10 @@
-let lista: Array <Object> = [
+interface Pessoa  {
+  id: number,
+  name: string,
+  bio: string
+}
+
+let lista: Array <Pessoa> = [
   {"id" : 1, "name": "Ada Lovelace", "bio" : "Ada Lovelace, foi uma matemática e escritora inglesa reconhecida por ter escrito o primeiro algoritmo para ser processado por uma máquina"},
   {"id" : 2, "name": "Alan Turing", "bio" : "Alan Turing foi um matemático, cientista da computação, lógico, criptoanalista, filósofo e biólogo teórico britânico, ele é amplamente considerado o pai da ciência da computação teórica e da inteligência artificial"},
   {"id" : 3, "name": "Nikola Tesla", "bio" : "Nikola Tesla foi um inventor, engenheiro eletrotécnico e engenheiro mecânico sérvio, mais conhecido por suas contribuições ao projeto do moderno sistema de fornecimento de eletricidade em corrente alternada."},
@@ -6,17 +12,27 @@ let lista: Array <Object> = [
 ]
 
 //a) Crie uma função que retorne a bio do id passado
-function acharBio(id: number) :string {
-  let pessoaBio : string;
+function acharBioImperativo(id: number): string {
+  const pessoa = lista.find(p => p.id === id);
   
-  lista.forEach(pessoa => {
-    if (pessoa['id'] === id) {
-      pessoaBio = pessoa['bio']
-    }
-  });
+  if(!pessoa) {
+    return "Biografia não encontrada pois id não existe"
+  }
 
-  return pessoaBio || "Biografia não encontrada pois id não existe"
-}
+  if(pessoa.bio === null || pessoa.bio === undefined || pessoa.bio.trim() === '') {
+    return "Biografia não esta disponível"
+  }
+  
+  return pessoa.bio
+};
+
+console.log(acharBioImperativo(2))
+
+
+// function acharBioFuncional(id: number, items :Array<Pessoa>) :string {
+//   const ip= items.find(item => item.id === id)
+//   return item || "Biografia não encontrada pois id não existe"
+// }
 
 //b) Crie uma função que retorne o name do id passado
 function acharNome(id: number) :string {
@@ -86,22 +102,8 @@ function alterarItemFuncional(id: number, campo: 'bio' | 'name', novoValor: stri
   return novaLista
 }
 
-function acharBioImperativo(id: number) :string {
-  let pessoaBio : string;
-  
-  lista.forEach(pessoa => {
-    if (pessoa['id'] === id) {
-      pessoaBio = pessoa['bio']
-    }
-  });
 
-  return pessoaBio || "Biografia não encontrada pois id não existe"
-}
 
-function acharBioFuncional(id: number, items :Array<Object>) :string {
-  const item = items.find(item => item['id'] === id)
-  return item['bio'] || "Biografia não encontrada pois id não existe"
-}
 
 function acharNomeImperativo(id: number) :string {
   let pessoaNome : string;  
