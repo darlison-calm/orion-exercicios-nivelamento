@@ -1,4 +1,4 @@
-import { lista, apagarItem, acharBio, alterarItem } from "./segundo-exercicio.js";
+import { lista, apagarItemImperativo, acharBioImperativo, alterarItemImperativo } from "./segundo-exercicio.js";
 let container = document.querySelector('tbody');
 function renderizarPessoas(lista) {
     lista.forEach((pessoa) => {
@@ -12,7 +12,7 @@ function renderizarPessoas(lista) {
         const deleteButton = tr.querySelector('.delete-btn');
         deleteButton.addEventListener('click', () => {
             let id = pessoa['id'];
-            apagarItem(id);
+            apagarItemImperativo(id);
             limparTabela();
             renderizarPessoas(lista);
         });
@@ -26,7 +26,7 @@ function mostrarBio() {
         const bioText = document.querySelector("#bio-text");
         event.preventDefault();
         let id = Number(bioInput.value);
-        bioText.innerHTML = acharBio(id);
+        bioText.innerHTML = acharBioImperativo(id);
     });
 }
 function limparTabela() {
@@ -43,10 +43,10 @@ function alteraçãoItemFuncionalidade() {
         let novaBio = inputNovaBio.value;
         let novoNome = inputNovoNome.value;
         if (novaBio) {
-            alterarItem(id, 'bio', novaBio);
+            alterarItemImperativo(id, 'bio', novaBio);
         }
         if (novoNome) {
-            alterarItem(id, 'name', novoNome);
+            alterarItemImperativo(id, 'name', novoNome);
         }
         limparTabela();
         renderizarPessoas(lista);
