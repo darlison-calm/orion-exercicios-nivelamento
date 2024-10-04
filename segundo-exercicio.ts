@@ -11,11 +11,34 @@ let lista: Array <Pessoa> = [
   {"id" : 4, "name": "Nicolau Copérnico", "bio": "Nicolau Copérnico foi um astrônomo e matemático polonês que desenvolveu a teoria heliocêntrica do Sistema Solar."}
 ]
 
+/* acharPessoa
+ *
+ * Retorna uma pessoa da lista com base no ID fornecido.
+ *
+ * @param id - O ID da pessoa que está sendo procurada.
+ * @param lista - Um array de objetos do tipo Pessoa onde a busca será realizada.
+ * @returns A pessoa correspondente ao ID fornecido ou undefined se não encontrada.
+ */
+
 function acharPessoa(id: number, lista: Array<Pessoa>) :Pessoa {
   return lista.find(p => p.id === id)
 }
 
-//a) Crie uma função que retorne a bio do id passado
+
+/*
+ * acharBioFuncional
+ *
+ * Retorna a biografia de uma pessoa com base no ID fornecido.
+ * Se a pessoa não existir ou sua biografia não estiver disponível, 
+ * retorna uma mensagem apropriada.
+ *
+ * @param id - O ID da pessoa cuja biografia está sendo procurada.
+ * @param lista - Um array de objetos do tipo Pessoa onde a busca será realizada.
+ * @returns A biografia da pessoa correspondente ao ID, uma mensagem de erro 
+ * se o ID não existir, ou uma mensagem informando que a biografia 
+ * não existe.
+ */
+
 function acharBioFuncional(id: number, lista: Array<Pessoa>): string {
   const pessoa = acharPessoa(id, lista)
 
@@ -29,7 +52,16 @@ function acharBioFuncional(id: number, lista: Array<Pessoa>): string {
   
   return pessoa.bio
 };
-
+/**
+ * acharBioImperativa
+ *
+ * Retorna a biografia de uma pessoa pelo ID fornecido.
+ * Se o ID não existir ou a biografia não estiver disponível, 
+ * retorna uma mensagem apropriada.
+ *
+ * @param id - O ID da pessoa cuja biografia está sendo procurada.
+ * @returns A biografia da pessoa ou mensagens de erro se necessário.
+ */
 function acharBioImperativa(id: number): string {
  const pessoa = acharPessoa(id, lista)
   
@@ -44,8 +76,18 @@ function acharBioImperativa(id: number): string {
   return pessoa.bio
 };
 
+/**
+ * acharNomeFuncional
+ *
+ * Retorna o nome de uma pessoa pelo ID fornecido.
+ * Se o ID não existir ou o nome não estiver disponível, 
+ * retorna uma mensagem apropriada.
+ *
+ * @param id - O ID da pessoa cujo nome está sendo procurado.
+ * @param lista - Array de objetos do tipo Pessoa onde a busca será realizada.
+ * @returns O nome da pessoa, ou mensagens de erro se a biografia ou a pessoa não existir.
+ */
 
-//b) Crie uma função que retorne o name do id passado
 function acharNomeFuncional(id: number, lista: Array<Pessoa>) :string {
   const pessoa = acharPessoa(id, lista)
 
@@ -60,6 +102,16 @@ function acharNomeFuncional(id: number, lista: Array<Pessoa>) :string {
   return pessoa.name
 }
 
+/**
+ * acharNomeImperativa
+ *
+ * Retorna o nome de uma pessoa pelo ID fornecido.
+ * Se o ID não existir ou o nome não estiver disponível, 
+ * retorna uma mensagem apropriada.
+ *
+ * @param id - O ID da pessoa cujo nome está sendo procurado.
+ * @returns O nome da pessoa ou erro se a pessoa ou o nome da pessoa não existir.
+ */
 function acharNomeImperativa(id: number) :string {
   const pessoa = acharPessoa(id, lista)
 
@@ -74,7 +126,14 @@ function acharNomeImperativa(id: number) :string {
   return pessoa.name
 }
 
-//c) Crie uma função que apague um item da lista a partir de um id passado
+/**
+ * apagarItemImperativo
+ *
+ * Remove uma pessoa da lista com base no ID fornecido.
+ * Se o ID não existir, não faz nenhuma alteração na lista.
+ *
+ * @param id - O ID da pessoa a ser removida da lista.
+ */
 function apagarItemImperativo(id: number): void {
   const index: number = lista.findIndex(pessoa => pessoa.id === id)
 
@@ -83,20 +142,55 @@ function apagarItemImperativo(id: number): void {
   }
 }
 
-function apagarItemFuncional(id: number, lista: Array<Pessoa>) :Array <Pessoa> {
-  return lista.filter(pessoa => pessoa.id !== id)
+/**
+ * apagarItemFuncional
+ *
+ * Remove uma pessoa da lista com base no ID fornecido.
+ * Retorna uma nova lista sem a pessoa cujo ID foi especificado.
+ *
+ * @param id - O ID da pessoa a ser removida da lista.
+ * @param lista - Um array de objetos do tipo Pessoa de onde a pessoa será removida.
+ * @returns Uma nova lista de pessoas sem a pessoa com o ID especificado.
+ */
+function apagarItemFuncional(id: number, lista: Array<Pessoa>): Array<Pessoa> {
+  return lista.filter(pessoa => pessoa.id !== id);
 }
 
-//d) Crie uma função que altere a bio ou o name a partir de um id passado
+/**
+ * alterarItemImperativo
+ *
+ * Altera o campo especificado (bio ou name) de uma pessoa na lista
+ * com base no ID fornecido. A alteração é feita diretamente na lista.
+ *
+ * @param id - O ID da pessoa cujo campo será alterado.
+ * @param campo - O campo a ser alterado, pode ser 'bio' ou 'name'.
+ * @param novoValor - O novo valor a ser atribuído ao campo.
+ */
 function alterarItemImperativo(id: number, campo: 'bio' | 'name', novoValor: string): void {
   let index: number = lista.findIndex(item => item.id === id);
   lista[index][campo] = novoValor
 }
 
+/**
+ * alterarItemFuncional
+ *
+ * Altera o campo especificado (bio ou name) de uma pessoa em uma nova lista
+ * com base no ID fornecido. Retorna uma nova lista com a alteração aplicada.
+ *
+ * @param id - O ID da pessoa cujo campo será alterado.
+ * @param campo - O campo a ser alterado, pode ser 'bio' ou 'name'.
+ * @param novoValor - O novo valor a ser atribuído ao campo.
+ * @param lista - Um array de objetos do tipo Pessoa de onde a pessoa será alterada.
+ * @returns Uma nova lista de pessoas com a alteração aplicada.
+ */
+
 function alterarItemFuncional(id: number, campo: 'bio' | 'name', novoValor: string, lista: Array<Pessoa>): Array<Pessoa> {
   const novaLista = [...lista]
   let index: number = novaLista.findIndex(pessoa => pessoa.id === id);
-  novaLista[index][campo] = novoValor
+
+  if (index !== -1) {
+    novaLista[index][campo] = novoValor;
+  }
   return novaLista
 }
 
