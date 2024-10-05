@@ -2,6 +2,16 @@ import {lista, apagarItemImperativo, acharBioImperativa, alterarItemImperativo, 
 
 let container = document.querySelector('tbody');
 
+/**
+ * renderizarPessoas
+ *
+ * Renderiza a lista de pessoas em uma tabela HTML.
+ * Para cada pessoa na lista, cria uma linha na tabela contendo
+ * o ID, nome, biografia e um botão para deletar a pessoa.
+ *
+ * @param lista - Um array de objetos do tipo Pessoa a ser renderizado na tabela.
+ *                Cada objeto deve ter as propriedades 'id', 'name', e 'bio'.
+ */
 function renderizarPessoas(lista: Array<Pessoa>) {
   
   lista.forEach((pessoa: Pessoa) => {
@@ -29,7 +39,13 @@ function renderizarPessoas(lista: Array<Pessoa>) {
 }
 
 
-
+/**
+ * mostrarBio
+ *
+ * Configura um evento para mostrar a biografia de uma pessoa
+ * com base no ID fornecido pelo usuário em um formulário.
+ * Ao enviar o formulário, a biografia correspondente é exibida.
+ */
 function mostrarBio() :void {
   const bioForm = document.getElementById('bio-form') as HTMLFormElement;
   const bioInput = document.getElementById('bio-input-id') as HTMLInputElement;
@@ -43,11 +59,24 @@ function mostrarBio() :void {
   })
 }
 
-
+/**
+ * limparTabela
+ *
+ * Limpa o conteúdo da tabela HTML
+ * Essa função é chamada antes de renderizar a lista atualizada para 
+ * que não haja dados antigos.
+ */
 function limparTabela() :void {
   container.innerHTML = ''
 }
 
+/**
+ * alteraçãoItemFuncionalidade
+ *
+ * Configura um evento para alterar os dados de uma pessoa na lista
+ * Permite ao usuário alterar o nome e/ou a biografia de uma pessoa,
+ * com base nos valores de um formulario.
+ */
 function alteraçãoItemFuncionalidade() {
   const alterarDadosForm = document.getElementById('alterar-item-form') as HTMLFormElement;
   const inputId = document.getElementById('input-id-dados') as HTMLInputElement;
